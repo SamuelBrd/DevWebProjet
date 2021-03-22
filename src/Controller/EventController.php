@@ -17,8 +17,6 @@ class EventController extends AbstractController
     
 
     /**
-    * Require ROLE_USER
-    * @IsGranted("ROLE_USER")
     * Lister uniquement les événements qui n'ont pas encore expiré !
     * @Route("/event", name="event.list")
      * @return Response

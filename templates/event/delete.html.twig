@@ -8,7 +8,7 @@
             <li><strong>{% trans %} Event name {% endtrans %} : </strong>{{ event.getNameEvent() }}</li>
             <li><strong>{% trans %} Community {% endtrans %} : </strong>{{ event.getTypeEvent() }}</li>
             <li><strong>{% trans %} Event Date {% endtrans %} : </strong>{{ event.getDateEvent()|date('d/m/Y') }}</li>
-            <li><strong> Description : </strong>{{ event.getDureeEvent() }}</li>
+            <li><strong>{% trans %} Duration (days) {% endtrans %} : </strong>{{ event.getDureeEvent() }}</li>
         </ul>
     </div>
     <div class="collapse navbar-collapse">
