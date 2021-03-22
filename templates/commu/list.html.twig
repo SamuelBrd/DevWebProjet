@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %} List of communities {% endtrans %}{% endblock %}
+
+{% block body %}
+    <table class="table text-center">
+        <tr>
+            <th class="active text-center">{% trans %} Name {% endtrans %}</th>
+            <th class="active text-center">Type</th>
+        </tr>
+
+        {% for community in commu %}
+            <tr>
+                <td>{{ community.getName() }}</td>
+                <td>{{ community.getRole() }}</td>           
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

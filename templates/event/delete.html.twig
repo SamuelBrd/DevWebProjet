@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="alert alert-danger">
+        <strong>{% trans %} Warning {% endtrans %} ! </strong>{% trans %} You are deleting the following event {% endtrans %} :
+        <ul>
+            <li><strong>{% trans %} Event name {% endtrans %} : </strong>{{ event.getNameEvent() }}</li>
+            <li><strong>{% trans %} Community {% endtrans %} : </strong>{{ event.getTypeEvent() }}</li>
+            <li><strong>{% trans %} Event Date {% endtrans %} : </strong>{{ event.getDateEvent()|date('d/m/Y') }}</li>
+            <li><strong> Description : </strong>{{ event.getDureeEvent() }}</li>
+        </ul>
+    </div>
+    <div class="collapse navbar-collapse">
+    {{ form_start(form, {'attr': {'class': 'navbar-form navbar-left'}}) }}
+    {{ form_widget(form) }}
+        <a href="{{ path('event.list') }}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>{% trans %} Cancel {% endtrans %}</a>
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes vous sûr ??')">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        {% trans %} Delete {% endtrans %}
+    </button>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

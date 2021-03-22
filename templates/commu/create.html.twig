@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer une communauté{% endblock %}
+
+{% block body %}
+    <h1>Créer</h1>
+
+    {{ form_start(CommuForm) }}
+        {{ form_row(CommuForm.name) }}
+        {{ form_row(CommuForm.role) }}
+
+        <button type="submit" class="btn">Créer</button>
+    {{ form_end(CommuForm) }}
+{% endblock %}

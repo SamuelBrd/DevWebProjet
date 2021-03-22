@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %} Events list {% endtrans %}{% endblock %}
+
+{% block body %}
+    <table class="table text-center">
+        <tr>
+            <th class="active text-center">{% trans %} Name {% endtrans %}</th>
+            <th class="active text-center"> Type </th>
+            <th class="active text-center"> Date </th>
+            <th class="active text-center">{% trans %} Duration (days) {% endtrans %}</th>
+            <th class="active text-center">{% trans %} Edit {% endtrans %}</th>
+            <th class="active text-center">{% trans %} Delete {% endtrans %}</th>
+        </tr>
+
+        {% for evenement in event %}
+            {% if app.user.getCommuName()  ==  evenement.getTypeEvent() %}
+                <tr>
+                    <td>{{ evenement.getNameEvent() }}</td>
+                    <td>{{ evenement.getTypeEvent() }}</td>
+                    <td>{{ evenement.getDateEvent() | date('d-m-Y') }}</td>
+                    <td>{{ evenement.getDureeEvent() }}</td>
+                    <td> <a href="event/{{evenement.getId()}}/edit"> ✏️ </a> </td>
+                    <td> <a href="event/{{evenement.getId()}}/delete"> 🗑 </a> </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+{% endblock %}

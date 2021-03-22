@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %} Create an event {% endtrans %}{% endblock %}
+
+{% block body %}
+    <h1>{% trans %} Create {% endtrans %}</h1>
+
+    {{ form_start(eventForm) }}
+    	<label>{% trans %} Event Name {% endtrans %} : </label>
+        {{ form_widget(eventForm.name_event) }}
+        <br>
+
+        <label>{% trans %} Even date {% endtrans %} : </label>
+        {{ form_widget(eventForm.date_event) }}
+        <br>
+
+        <label>{% trans %} Duration (days) {% endtrans %} : </label>
+        {{ form_widget(eventForm.duree_event) }}
+        <br>
+
+        <button type="submit" class="btn">{% trans %} Create {% endtrans %}</button>
+    {{ form_end(eventForm) }}
+{% endblock %}
