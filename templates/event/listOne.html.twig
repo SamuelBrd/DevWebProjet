@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %} Events list {% endtrans %}{% endblock %}
+
+{% block body %}
+    {% if is_granted('ROLE_ADMIN') %}
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <div>
+                    <a href="/{_locale}/allevent"> Afficher tous les événements </a>     
+                </div>
+                <div>
+                    <a href="/{_locale}/event"> Afficher les événements récents</a>     
+                </div>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <div>
+                    <b>
+                        <a class="navbar-brand" href="/{_locale}/nouveauevent">{% trans %} Create an event {% endtrans %}</a>
+                    </b>     
+                </div>
+            </li>
+        </ul>
+        <br>
+        <br>
+    {% endif %}
+    
+    <table class="table text-center">
+        <div>
+            <br>
+            <strong>{% trans %} Event Name {% endtrans %} : </strong>{{ event.getNameEvent() }}
+            <br>
+            <strong>{% trans %} Community {% endtrans %} : </strong>{{ event.getTypeEvent() }}
+            <br>
+            <strong>{% trans %} Even date {% endtrans %} : </strong>{{ event.getDateEvent()|date('d/m/Y') }}
+            <br>
+            <strong>{% trans %} Duration (days) {% endtrans %} : </strong>{{ event.getDureeEvent() }}     
+        </div>
+    </table>
+{% endblock %}

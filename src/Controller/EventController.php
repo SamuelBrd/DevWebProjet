@@ -36,10 +36,35 @@ class EventController extends AbstractController
     */
     public function listAll() : Response
     {
-        $events = $this->getDoctrine()->getRepository(Evenement::class)->findAll();
-        return $this->render('stage/list.html.twig', [
-        'stages' => $stages,
+        $event = $this->getDoctrine()->getRepository(Evenement::class)->getAllEvent();
+        return $this->render('event/list.html.twig', [
+        'event' => $event,
         ]);
+    }
+
+    /**
+    * Lister un événement.
+    * @Route("/{_locale}/event/{id}/showEvent", name="event.show")
+    * @param Request $request
+    * @param EntityManagerInterface $em
+    * @return RedirectResponse|Response
+    */
+    public function listOne(Request $request, Evenement $event, EntityManagerInterface $em) : Response
+    {
+        $form = $this->createFormBuilder()
+            ->setAction($this->generateUrl('event.show', ['id' => $event->getId()]))
+            ->getForm();
+        $form->handleRequest($request);
+        if ( ! $form->isSubmitted() || ! $form->isValid()) {
+            return $this->render('event/listOne.html.twig', [
+                'event' => $event,
+                'form' => $form->createView(),
+            ]);
+        }
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($event);
+        $em->flush();
+        return $this->redirectToRoute('event.show');
     }
 
     /**

@@ -62,4 +62,28 @@ class EvenementRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+
+    /**
+    * @return Evenement[]
+    */
+    public function getAllEvent()
+    {
+        return $this->createQueryBuilder('e')
+            ->orderBy('e.dateEvent', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+    * @return Evenement
+    */
+    public function getOneEvent()
+    {
+        return $this->createQueryBuilder('e')
+            ->orderBy('e.dateEvent', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
