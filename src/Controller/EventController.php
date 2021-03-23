@@ -23,12 +23,22 @@ class EventController extends AbstractController
      */
     public function list(EntityManagerInterface $em) : Response
     {
-        $query = $em->createQuery(
-            'SELECT e FROM App:Evenement e WHERE e.dateEvent > :date'
-        )->setParameter('date', new \DateTime());
-        $event = $query->getResult();
+        $event = $this->getDoctrine()->getRepository(Evenement::class)->getEventNonExpires();
         return $this->render('event/list.html.twig', [
             'event' => $event,
+        ]);
+    }
+
+    /**
+    * Lister tous les événements.
+    * @Route("/{_locale}/allevent", name="allevent.list")
+    * @return Response
+    */
+    public function listAll() : Response
+    {
+        $events = $this->getDoctrine()->getRepository(Evenement::class)->findAll();
+        return $this->render('stage/list.html.twig', [
+        'stages' => $stages,
         ]);
     }
 
