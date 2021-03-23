@@ -3,31 +3,31 @@
 {% block title %}{% trans %} Events list {% endtrans %}{% endblock %}
 
 {% block body %}
-    {% if is_granted('ROLE_ADMIN') %}
-        <ul class="nav navbar-nav navbar-left">
-            <li>
-                <div>
-                    <a href="/{_locale}/allevent"> Afficher tous les événements </a>     
-                </div>
-                <div>
-                    <a href="/{_locale}/event"> Afficher les événements récents</a>     
-                </div>
-            </li>
-        </ul>
+    <ul class="nav navbar-nav navbar-left">
+        <li>
+            <div>
+                <a href="{{ path('allevent.list') }}"> Afficher tous les événements </a>     
+            </div>
+            <div>
+                <a href="{{ path('event.list') }}"> Afficher les événements récents</a>     
+            </div>
+        </li>
+    </ul>
 
+    {% if is_granted('ROLE_ADMIN') %}
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <div>
                     <b>
-                        <a class="navbar-brand" href="/{_locale}/nouveauevent">{% trans %} Create an event {% endtrans %}</a>
+                        <a class="navbar-brand" href="{{ path('event.create') }}">{% trans %} Create an event {% endtrans %}</a>
                     </b>     
                 </div>
             </li>
         </ul>
-        <br>
-        <br>
     {% endif %}
-    
+    <br>
+    <br>
+
     <table class="table text-center">
         <div>
             <br>

@@ -15,9 +15,9 @@
     <div class="container-fluid">
         <div class="navbar-header">
 
-            <a class="navbar-brand" href="/{_locale}"><span class="glyphicon glyphicon-home"></span></a>
-            <a class="navbar-brand" href="/{_locale}/event">{% trans %} Events {% endtrans %}</a>
-            <a class="navbar-brand" href="/{_locale}/commu">{% trans %} Community {% endtrans %}</a>
+            <a class="navbar-brand" href="{{ path('homepage') }}"><span class="glyphicon glyphicon-home"></span></a>
+            <a class="navbar-brand" href="{{ path('event.list') }}">{% trans %} Events {% endtrans %}</a>
+            <a class="navbar-brand" href="{{ path('commu.list') }}">{% trans %} Community {% endtrans %}</a>
         </div>
 
         <div class="collapse navbar-collapse">
@@ -25,10 +25,10 @@
                 <li>
                     <div>
                         {% if not is_granted('ROLE_USER') %}
-                            <a class="navbar-brand" href="/{_locale}/login"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a>
-                            <a class="navbar-brand" href="/{_locale}/register">{% trans %} Registration {% endtrans %}</a>
+                            <a class="navbar-brand" href="{{ path('app_login') }}"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
+                            <a class="navbar-brand" href="{{ path('app_register') }}">{% trans %} Registration {% endtrans %}</a>
                         {% else %}
-                            <a class="navbar-brand" href="/{_locale}/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a>
+                            <a class="navbar-brand" href="{{ path('app_logout') }}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
                         {% endif %}
                         {% for key,locale in locales %}
                             <li><a href="{{ path(app.request.get('_route'),
