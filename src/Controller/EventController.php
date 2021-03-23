@@ -18,7 +18,7 @@ class EventController extends AbstractController
 
     /**
     * Lister uniquement les événements qui n'ont pas encore expiré !
-    * @Route("/event", name="event.list")
+    * @Route("/{_locale}/event", name="event.list")
      * @return Response
      */
     public function list(EntityManagerInterface $em) : Response
@@ -36,7 +36,7 @@ class EventController extends AbstractController
     * Require ROLE_ADMIN
     * @IsGranted("ROLE_ADMIN")
  	* Créer un nouveau stage.
- 	* @Route("/nouveauevent", name="event.create")
+ 	* @Route("/{_locale}/nouveauevent", name="event.create")
  	*/
 	public function create(Request $request, UserInterface $user)
 	{
@@ -60,7 +60,7 @@ class EventController extends AbstractController
     * Require ROLE_ADMIN
     * @IsGranted("ROLE_ADMIN")
     * Éditer un évenement.
-    * @Route("event/{id}/edit", name="event.edit")
+    * @Route("/{_locale}/event/{id}/edit", name="event.edit")
     * @param Request $request
     * @param EntityManagerInterface $em
     * @return RedirectResponse|Response
@@ -82,7 +82,7 @@ class EventController extends AbstractController
     * Require ROLE_ADMIN
     * @IsGranted("ROLE_ADMIN")
     * Supprimer un événement.
-    * @Route("event/{id}/delete", name="event.delete")
+    * @Route("/{_locale}/event/{id}/delete", name="event.delete")
     * @param Request $request
     * @param Event $event
     * @param EntityManagerInterface $em

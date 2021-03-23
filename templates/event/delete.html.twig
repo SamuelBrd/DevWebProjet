@@ -5,9 +5,9 @@
     <div class="alert alert-danger">
         <strong>{% trans %} Warning {% endtrans %} ! </strong>{% trans %} You are deleting the following event {% endtrans %} :
         <ul>
-            <li><strong>{% trans %} Event name {% endtrans %} : </strong>{{ event.getNameEvent() }}</li>
+            <li><strong>{% trans %} Event Name {% endtrans %} : </strong>{{ event.getNameEvent() }}</li>
             <li><strong>{% trans %} Community {% endtrans %} : </strong>{{ event.getTypeEvent() }}</li>
-            <li><strong>{% trans %} Event Date {% endtrans %} : </strong>{{ event.getDateEvent()|date('d/m/Y') }}</li>
+            <li><strong>{% trans %} Even date {% endtrans %} : </strong>{{ event.getDateEvent()|date('d/m/Y') }}</li>
             <li><strong>{% trans %} Duration (days) {% endtrans %} : </strong>{{ event.getDureeEvent() }}</li>
         </ul>
     </div>

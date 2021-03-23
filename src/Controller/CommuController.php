@@ -10,6 +10,9 @@ use App\Entity\Community;
 use App\Form\CommuType;
 use Doctrine\ORM\EntityManagerInterface;
 
+/**
+* @Route("/{_locale}")
+*/
 class CommuController extends AbstractController
 {
      /**
