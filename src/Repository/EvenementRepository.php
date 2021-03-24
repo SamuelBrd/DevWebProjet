@@ -52,6 +52,22 @@ class EvenementRepository extends ServiceEntityRepository
     /**
     * @return Evenement[]
     */
+    public function searchEvent($criteria)
+    {
+        return $this->createQueryBuilder('e')
+            ->where('e.typeEvent = :name')
+            ->andWhere('e.dateEvent > :date')
+            ->setParameter('name', $criteria['type_event'])
+            ->setParameter('date', new \DateTime())
+            ->orderBy('e.dateEvent', 'DESC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+    * @return Evenement[]
+    */
     public function getEventNonExpires()
     {
         return $this->createQueryBuilder('e')

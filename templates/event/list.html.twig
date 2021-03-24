@@ -3,14 +3,23 @@
 {% block title %}{% trans %} Events list {% endtrans %}{% endblock %}
 
 {% block body %}
+
     <ul class="nav navbar-nav navbar-left">
         <li>
             <div>
                 <a href="{{ path('allevent.list') }}">{% trans %} Show all events {% endtrans %} </a>     
             </div>
             <div>
-                <a href="{{ path('event.list') }}">{% trans %} View recent events {% endtrans %} </a>     
+                <a href="{{ path('event.list') }}">{% trans %} Show recent events {% endtrans %} </a>     
             </div>
+            <br>
+            <b>
+                <button>
+                    <div>
+                        <a href="{{ path('search_event') }}">{% trans %} Advanced search {% endtrans %} </a>     
+                    </div>
+                </button>
+            </b>
         </li>
     </ul>
     {% if is_granted('ROLE_ADMIN') %}
@@ -26,16 +35,17 @@
     {% endif %}
     
     <table class="table text-center">
+        <br><br><br><br><br>
         <tr>
             <th class="active text-center">{% trans %} Name {% endtrans %}</th>
             <th class="active text-center"> Type </th>
             <th class="active text-center"> Date </th>
             <th class="active text-center">{% trans %} Duration (days) {% endtrans %}</th>
+            <th class="active text-center">{% trans %} Consult {% endtrans %}</th>
             {% if is_granted('ROLE_ADMIN') %}
                 <th class="active text-center">{% trans %} Edit {% endtrans %}</th>
                 <th class="active text-center">{% trans %} Delete {% endtrans %}</th>
             {% endif %}
-            <th class="active text-center">{% trans %} Consult {% endtrans %}</th>
         </tr>
 
         {% for evenement in event %}
@@ -46,11 +56,11 @@
                         <td>{{ evenement.getTypeEvent() }}</td>
                         <td>{{ evenement.getDateEvent() | date('d-m-Y') }}</td>
                         <td>{{ evenement.getDureeEvent() }}</td>
+                        <td> <a href="event/{{evenement.getId()}}/showEvent"> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </a> </td>
                         {% if is_granted('ROLE_ADMIN') %}
                             <td> <a href="event/{{evenement.getId()}}/edit"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> </a> </td>
                             <td> <a href="event/{{evenement.getId()}}/delete"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> </a> </td>
                         {% endif %}
-                        <td> <a href="event/{{evenement.getId()}}/showEvent"> <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> </a> </td>
                     </tr>
                 {% endif %}
             {% else %}

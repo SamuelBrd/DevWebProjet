@@ -6,11 +6,19 @@
     <ul class="nav navbar-nav navbar-left">
         <li>
             <div>
-                <a href="{{ path('allevent.list') }}"> Afficher tous les événements </a>     
+                <a href="{{ path('allevent.list') }}">{% trans %} Show all events {% endtrans %} </a>    
             </div>
             <div>
-                <a href="{{ path('event.list') }}"> Afficher les événements récents</a>     
+                <a href="{{ path('event.list') }}">{% trans %} Show recent events {% endtrans %} </a>     
             </div>
+            <br>
+            <button>
+                <b>
+                    <div>
+                        <a href="{{ path('search_event') }}">{% trans %} Advanced search {% endtrans %} </a>     
+                    </div>
+                </b>
+            </button>
         </li>
     </ul>
 
@@ -25,10 +33,9 @@
             </li>
         </ul>
     {% endif %}
-    <br>
-    <br>
 
     <table class="table text-center">
+        <br><br><br><br><br>
         <div>
             <br>
             <strong>{% trans %} Event Name {% endtrans %} : </strong>{{ event.getNameEvent() }}
