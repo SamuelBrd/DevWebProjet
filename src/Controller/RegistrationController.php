@@ -36,7 +36,7 @@ class RegistrationController extends AbstractController
             );
 
             // attribut le rôle User par défaut à chaque nouveau utilisateurs
-            $roles[] = 'ROLE_USER';
+            $roles[] = 'ROLE_MEMBER';
             $user->setRoles($roles);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

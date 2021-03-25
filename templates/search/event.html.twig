@@ -39,8 +39,12 @@
 
 
     {{ form_start(form) }}
-        <label>{% trans %} Event type {% endtrans %} : </label>
+        <label>{% trans %} Community name {% endtrans %} : </label>
         {{ form_widget(form.type_event) }}
+        <br>
+
+        <label>{% trans %} Event date {% endtrans %} : </label>
+        {{ form_widget(form.date_event) }}
         <br>
 
         <button type="submit" class="btn">{% trans %} Search {% endtrans %}</button>
