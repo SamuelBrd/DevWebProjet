@@ -9,8 +9,10 @@
 
     {% block javascripts %}{% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/style.css">
+
 </head>
-<body>
+<body class="light">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -33,13 +35,26 @@
                             <li><a href="{{ path(app.request.get('_route'),
                             app.request.attributes.get('_route_params')|merge({'_locale': key})) }}">{{locale}}</a></li>
                         {% endfor %} 
+                        <div class="btn-toggle"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span></div>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
+    <script>
+        const btnToggle = document.querySelector('.btn-toggle');
+        btnToggle.addEventListener('click', () => {
+            const body = document.body;
+            if(body.classList.contains('dark')){
+                body.classList.add('light')
+                body.classList.remove('dark')
+            } else if(body.classList.contains('light')){
+                body.classList.add('dark')
+                body.classList.remove('light')
+            }
+        })
+    </script>
 </nav>
-
 <div class="container">
     {% block body %}{% endblock %}
 </div>
