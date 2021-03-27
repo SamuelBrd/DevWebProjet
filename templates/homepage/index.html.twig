@@ -3,29 +3,46 @@
 {% block title %}{% trans %} Homepage {% endtrans %}{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <center>
-        {% if is_granted('ROLE_USER') %}
-            <h2>{% trans %} You are logged in as {% endtrans %} : {{ app.user.getPseudo() }}</h2>
-        {% endif %}
-        <h1>{% trans %} Welcome to this event management site {% endtrans %} </h1>
-    </center>
-
-    {% trans %} To participate in an event you must {% endtrans %} :
-    <ul>
-        <li>{% trans %} Create an account {% endtrans %}</li>
-        <li>{% trans %} Register for an event created by your community {% endtrans %}</li>
-    </ul>
-
-    {% trans %} Creation of events {% endtrans %} :
-    <ul>
-        <li>{% trans %} Only the administrator of your community can create an event {% endtrans %}</li>
-        <li>{% trans %} If you're a member of a community and have an idea for an event, please refer your administrator {% endtrans %}</li>
-    </ul>
-</div>
+<center>
+    <header class="masthead">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">{% trans %} Welcome to this event management site {% endtrans %}</h2>
+                <h3 class="section-subheading text-muted">{% trans %} It's Nice To Meet You {% endtrans %}</h3>
+                {% if is_granted('ROLE_USER') %}
+                    <h3 class="section-subheading text-muted">{{ app.user.getPseudo() }}</h3>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+    <br>
+    <img src='/images/homepageS.png' width="450">
+    <section class="page-section bg-light" id="team">
+        <div class="container">
+            <div class="text-center">
+                <h4 class="section-heading text-uppercase">{% trans %} Our Team {% endtrans %}</h4>
+                <h5 class="section-subheading text-muted">{% trans %} We are thrid year computer science students {% endtrans %}</h5>
+            </div>
+            <div class="text-center">
+                <div class="col-lg-6">
+                    <div class="team-member">
+                        <img src='/images/man.png' width="50">
+                        <h4>Samuel Briand</h4>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-member">
+                        <img src='/images/boy.png' width="50">
+                        <h4>Alexis David</h4>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="text-center">
+                        <h3 class="section-subheading text-muted">{% trans %} Enjoy the moment {% endtrans %} !</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</center>
 {% endblock %}

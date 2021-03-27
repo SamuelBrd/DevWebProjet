@@ -15,8 +15,8 @@
 }
 
 body.dark {
-    color: #fff!important;
-    background: #333!important;
+    color: #fff;
+    background: #333;
 }
 body.dark .btn-toggle {
     background: #f1f1f1;
