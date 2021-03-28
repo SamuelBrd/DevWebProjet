@@ -87,7 +87,7 @@ class EventController extends AbstractController
  			$entityManager = $this->getDoctrine()->getManager();
  			$entityManager->persist($event);
  			$entityManager->flush();
- 			return $this->redirectToRoute('homepage');
+ 			return $this->redirectToRoute('event.list');
  		}
  			return $this->render('event/create.html.twig', [
  			'eventForm' => $form->createView(),
