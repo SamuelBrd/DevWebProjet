@@ -15,7 +15,8 @@ class CategorieController extends AbstractController
      * @Route("/categorie", name="categorie")
      */
     public function index(): Response
-    {
+    {	
+    	// Redirige vers la vue de catégorie 
         return $this->render('categorie/index.html.twig', [
             'controller_name' => 'CategorieController',
         ]);

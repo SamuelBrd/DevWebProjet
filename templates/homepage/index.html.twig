@@ -9,6 +9,9 @@
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">{% trans %} Welcome to this event management site {% endtrans %}</h2>
                 <h3 class="section-subheading text-muted">{% trans %} It's Nice To Meet You {% endtrans %}</h3>
+
+                {# Affiche le pseudo de l'utilisateur lorsque ce dernier est connecté #}
+
                 {% if is_granted('ROLE_USER') %}
                     <h3 class="section-subheading text-muted">{{ app.user.getPseudo() }}</h3>
                 {% endif %}

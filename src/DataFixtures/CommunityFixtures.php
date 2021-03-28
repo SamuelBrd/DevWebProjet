@@ -8,6 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 class CommunityFixtures extends Fixture
 {
     /**
+     * Création initiale des communautés
      * @param ObjectManager $manager
      *
      * @return void

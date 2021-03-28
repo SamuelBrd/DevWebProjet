@@ -16,6 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class CommuController extends AbstractController
 {
      /**
+     * Affiche les communautés 
      * @Route("/commu", name="commu.list")
      * @return Response
      */

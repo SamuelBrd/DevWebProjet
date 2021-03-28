@@ -17,7 +17,7 @@ class EventController extends AbstractController
     
 
     /**
-    * Lister uniquement les événements qui n'ont pas encore expiré !
+    * Lister uniquement les événements qui n'ont pas encore expiré
     * @Route("/{_locale}/event", name="event.list")
      * @return Response
      */
@@ -30,7 +30,7 @@ class EventController extends AbstractController
     }
 
     /**
-    * Lister tous les événements.
+    * Lister tous les événements, même ceux qui ont expiré.
     * @Route("/{_locale}/allevent", name="allevent.list")
     * @return Response
     */
@@ -43,7 +43,7 @@ class EventController extends AbstractController
     }
 
     /**
-    * Lister un événement.
+    * Lister un événement particulier.
     * @Route("/{_locale}/event/{id}/showEvent", name="event.show")
     * @param Request $request
     * @param EntityManagerInterface $em
@@ -68,6 +68,7 @@ class EventController extends AbstractController
     }
 
     /**
+    * Créer un nouvel événement. Cette action est possible uniquement par les administrateurs
     * Require ROLE_ADMIN
     * @IsGranted("ROLE_ADMIN")
  	* Créer un nouveau stage.
@@ -80,6 +81,8 @@ class EventController extends AbstractController
  		$form->handleRequest($request);
  		if ($form->isSubmitted() && $form->isValid()) {
             $commu = $user->getCommuName();
+            // Attribut automatiquement la communauté de l'administrateur qui créé l'événement
+            // comme type d'événement
             $event->setTypeEvent($commu);
  			$entityManager = $this->getDoctrine()->getManager();
  			$entityManager->persist($event);

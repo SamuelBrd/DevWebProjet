@@ -7,6 +7,9 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Permet la création d'une communauté (pas implémenté dans l'application)
+ */
 class CommuType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)

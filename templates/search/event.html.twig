@@ -6,6 +6,9 @@
 
     <ul class="nav navbar-nav navbar-left">
         <li>
+
+            {# Bouton de filtre #}
+
             <div>
                 <a href="{{ path('allevent.list') }}">{% trans %} Show all events {% endtrans %} </a>     
             </div>
@@ -14,6 +17,9 @@
             </div>
             <br>
             <b>
+
+                {# Bouton de recherche avancée #}
+
                 <button>
                     <div>
                         <a href="{{ path('search_event') }}">{% trans %} Advanced search {% endtrans %} </a>     
@@ -22,6 +28,9 @@
             </b>
         </li>
     </ul>
+
+    {# Seul l'administrateur peut voir et créer un événement #}
+
     {% if is_granted('ROLE_ADMIN') %}
         <ul class="nav navbar-nav navbar-right">
             <li>
@@ -35,6 +44,9 @@
     {% endif %}
     
     <br><br><br><br><br>
+
+    {# Formulaire de recherche avancée #}
+
     <h1> {% trans %} Advanced search {% endtrans %} </h1>
 
 
@@ -51,6 +63,8 @@
         <br><br>
     <table class="table text-center">
         
+        {# Affiche la liste des événements répondant aux critères ou retourne un message de résultat inexistant #}
+
         {% if app.request.method == 'POST'%}
             {% if event |length > 0 %}
                 <tr>

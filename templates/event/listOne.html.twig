@@ -5,6 +5,9 @@
 {% block body %}
     <ul class="nav navbar-nav navbar-left">
         <li>
+
+            {# Bouton de filtre #}
+
             <div>
                 <a href="{{ path('allevent.list') }}">{% trans %} Show all events {% endtrans %} </a>    
             </div>
@@ -12,6 +15,9 @@
                 <a href="{{ path('event.list') }}">{% trans %} Show recent events {% endtrans %} </a>     
             </div>
             <br>
+
+            {# Bouton de recherche avancée #}
+
             <button>
                 <b>
                     <div>
@@ -21,6 +27,8 @@
             </button>
         </li>
     </ul>
+
+    {# Seul l'administrateur peut voir et créer un événement #}
 
     {% if is_granted('ROLE_ADMIN') %}
         <ul class="nav navbar-nav navbar-right">

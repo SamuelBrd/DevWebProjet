@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomepageController extends AbstractController
 {
     /**
+     * Redirection vers la page d'accueil
      * @Route("/", name="homepage")
      */
     public function index(): Response

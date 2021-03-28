@@ -50,6 +50,8 @@ class EvenementRepository extends ServiceEntityRepository
     */
 
     /**
+    * Retourne les événements ayant un typeEvent similaire à la valeur saisie
+    * et une date supérieur à la date saisie
     * @return Evenement[]
     */
     public function searchEvent($criteria)
@@ -66,6 +68,7 @@ class EvenementRepository extends ServiceEntityRepository
     }
 
     /**
+    * Retourne les événements ayant une date supérieur à la date saisie triées par date
     * @return Evenement[]
     */
     public function getEventNonExpires()
@@ -80,6 +83,7 @@ class EvenementRepository extends ServiceEntityRepository
     }
 
     /**
+    * Retourne tous les événements disponibles triées par date
     * @return Evenement[]
     */
     public function getAllEvent()
@@ -92,6 +96,7 @@ class EvenementRepository extends ServiceEntityRepository
     }
 
     /**
+    * Retourne un événement particulier
     * @return Evenement
     */
     public function getOneEvent()

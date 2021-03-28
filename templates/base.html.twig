@@ -25,22 +25,37 @@
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <div>
+
+                        {# Si l'utilisateur n'est pas connecté ce dernier peut se connecter ou s'inscrire #}
+
                         {% if not is_granted('ROLE_USER') %}
                             <a class="navbar-brand" href="{{ path('app_login') }}"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
                             <a class="navbar-brand" href="{{ path('app_register') }}">{% trans %} Registration {% endtrans %}</a>
+
+                        {# Si l'utilisateur est connecté, il peut seulement se déconnecté #}
+
                         {% else %}
                             <a class="navbar-brand" href="{{ path('app_logout') }}"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></a>
                         {% endif %}
+
+                        {# Choix de la langue #}
+
                         {% for key,locale in locales %}
                             <li><a href="{{ path(app.request.get('_route'),
                             app.request.attributes.get('_route_params')|merge({'_locale': key})) }}">{{locale}}</a></li>
                         {% endfor %} 
+
+                        {# Bouton pour passer la page en darkmode #}
+
                         <div class="btn-toggle"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span></div>
                     </div>
                 </li>
             </ul>
         </div>
     </div>
+
+    {# Script du bouton de passage en darkmode #}
+
     <script>
         const btnToggle = document.querySelector('.btn-toggle');
         btnToggle.addEventListener('click', () => {

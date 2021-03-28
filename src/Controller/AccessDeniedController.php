@@ -15,6 +15,7 @@ class AccessDeniedController extends AbstractController implements AccessDeniedH
 {
     public function handle(Request $request, AccessDeniedException $accessDeniedException)
     {
+    	// Redirige vers la page de connexion si l'utilisateur effectue une opération qu'il ne peut pas faire
         return $this->redirectToRoute("app_login");
     }
 }

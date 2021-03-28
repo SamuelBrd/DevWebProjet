@@ -16,6 +16,7 @@ class SearchController extends AbstractController
 {
 
     /**
+     * Effectue la recherche avancée d'un événement
      * @Route("/search", name="search_event")
      */
     public function searchEvent(Request $request, EvenementRepository $eventRepository)
@@ -25,6 +26,7 @@ class SearchController extends AbstractController
     	$form->handleRequest($request);
 
     	if($form->isSubmitted() && $form->isValid()) {
+    		// criteria sont les critères de la recherche avancée
     		$criteria = $form->getData();
     		$event = $eventRepository->searchEvent($criteria);
     	}

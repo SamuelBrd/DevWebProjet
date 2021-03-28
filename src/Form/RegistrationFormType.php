@@ -16,6 +16,9 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
+/**
+ * Permet l'inscription sur l'application d'un utilisateur
+ */
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -34,6 +37,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
 
+            // Toutes les communautés disponible dans l'application
             ->add('commu_name', ChoiceType::class, [
                 'choices' => [
                     'Hashtag Info' => 'Hashtag Info',
